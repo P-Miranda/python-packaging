@@ -11,6 +11,11 @@ create-venv:
 build: build-clean
 	pyproject-build
 
+build-extract:
+	mkdir -p extract
+	tar -xzf dist/*.tar.gz -C extract
+	unzip -l dist/*.whl
+
 # Clean build artifacts
 build-clean:
-	@rm -rf dist *.egg-info
+	@rm -rf dist src/*.egg-info extract
