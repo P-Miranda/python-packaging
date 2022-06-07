@@ -23,7 +23,18 @@ build-clean:
 # Measure performance of harmonic mean
 profile-hm:
 	python -m timeit \
-		--setup 'from harmonic_mean import harmonic_mean' \
+		--setup 'from imppkg.harmonic_mean import harmonic_mean' \
 		--setup 'from random import randint' \
 		--setup 'nums = [randint(1, 1_000_000) for _ in range(1_000_000)]' \
 		'harmonic_mean(nums)'
+
+# Install current package
+install-package:
+	python3 -m pip install .
+
+# Run harmony command line tool
+# also works without PATH when VENV is active: 
+# 	harmony 0.65 0.7
+harmony-cmd:
+	$(VENV)/bin/harmony 0.65 0.7
+	harmony 0.65 0.7
