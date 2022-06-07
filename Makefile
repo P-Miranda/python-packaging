@@ -1,7 +1,7 @@
 VENV=.venv
 
-all:
-	@echo "Default Make target! (does nothing currently)"
+all: build-clean build install-package harmony-cmd
+	@echo "Default Make target!"
 
 # Only create venv if it does not exist already
 create-venv:
