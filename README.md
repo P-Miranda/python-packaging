@@ -170,3 +170,15 @@ Simple configuration/defaults. Does not break code. Follows PEP-8!
 
 - Install black using pipx: `pipx install black`
 
+## Testing
+Tools to run unit tests and get coverage information.
+### Pytest
+Install pytest into virtual environment:
+```
+python -m pip install pytest
+```
+### Pytest-Cov
+Install pytest-cov into virtual environment:
+```
+python -m pip install pytest-cov
+```

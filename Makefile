@@ -1,4 +1,5 @@
 VENV=.venv
+PYTHON=$(VENV)/bin/python
 
 all: build-clean build install-package harmony-cmd
 	@echo "Default Make target!"
@@ -22,7 +23,7 @@ build-clean:
 
 # Measure performance of harmonic mean
 profile-hm:
-	python -m timeit \
+	$(PYTHON) -m timeit \
 		--setup 'from imppkg.harmonic_mean import harmonic_mean' \
 		--setup 'from random import randint' \
 		--setup 'nums = [randint(1, 1_000_000) for _ in range(1_000_000)]' \
@@ -30,7 +31,7 @@ profile-hm:
 
 # Install current package
 install-package:
-	python3 -m pip install .
+	$(PYTHON) -m pip install .
 
 # Run harmony command line tool
 # also works without PATH when VENV is active: 
@@ -38,3 +39,13 @@ install-package:
 harmony-cmd:
 	$(VENV)/bin/harmony 0.65 0.7
 	harmony 0.65 0.7
+
+# Run tests
+test:
+	$(PYTHON) -m pytest 
+
+# Run coverate
+coverage:
+	$(PYTHON) -m pytest --cov
+
+.PHONY: build-clean test coverage

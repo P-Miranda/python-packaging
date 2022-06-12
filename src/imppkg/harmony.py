@@ -6,11 +6,16 @@ from termcolor import cprint
 
 
 def main():
-    arg_list = []
-    for arg in sys.argv[1:]:
-        arg_list.append(float(arg))
-    cprint(harmonic_mean(arg_list), 'green', 'on_cyan', attrs=['bold'])
+    result = 0.0
 
+    try:
+        nums = [float(num) for num in sys.argv[1:]]
+    except ValueError:
+        nums = []
 
-if __name__ == "__main__":
-    main()
+    try:
+        result = harmonic_mean(nums)
+    except ZeroDivisionError:
+        pass
+
+    cprint(result, 'red', 'on_cyan', attrs=['bold'])
