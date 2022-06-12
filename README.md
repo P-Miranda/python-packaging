@@ -182,3 +182,40 @@ Install pytest-cov into virtual environment:
 ```
 python -m pip install pytest-cov
 ```
+### Pytest-randomonly
+Install pytest-randomly plugin:
+```
+python -m pip install pytest-randomly
+```
+### Tox
+Tox is a testing and task management tool for Python projects.
+
+Install `tox` with `pipx`:
+```
+pipx install tox
+```
+
+*NOTE*: for `tox` to find multiple python versions, you need to have then
+accessible. If you have `pyenv`, you need to install the python versions and
+enable them locally for the repository:
+```
+pyenv local 3.9.13 3.10.4
+```
+#### `tox` test environments:
+Setup commands to run and dependencies for tox environments:
+In `setup.cfg` add:
+```
+[testenv]
+commands = pytest {posargs}
+deps =
+    pytest
+    pytest-cov
+    pytest-randomly
+```
+
+Run `tox` with arguments:
+```
+tox -p -- {flags}
+# Example
+tox -p -- --cov
+```

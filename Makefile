@@ -48,4 +48,18 @@ test:
 coverage:
 	$(PYTHON) -m pytest --cov
 
-.PHONY: build-clean test coverage
+# Tox coverage: multiple python versions
+# tox -- {options}
+# -p: run environments in parallel
+tox-coverage:
+	tox -p -- --cov
+
+tox-clean:
+	rm -rf .tox
+
+clean-all: build-clean tox-clean
+	rm -rf build
+	rm -rf .coverage .pytest_cache __pycache__/ test/__pycache__/
+
+.PHONY: clean-all build-clean \
+	test coverage tox-coverage
