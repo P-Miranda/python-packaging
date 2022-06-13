@@ -170,6 +170,20 @@ Simple configuration/defaults. Does not break code. Follows PEP-8!
 
 - Install black using pipx: `pipx install black`
 
+### Mypy Static Type Checker
+Mypy is an optional static type checker for Python that aims to combine the
+benefits of dynamic (or "duck") typing and static typing. Mypy combines the
+expressive power and convenience of Python with a powerful type system and
+compile-time type checking. Mypy type checks standard Python programs; run them
+using any Python VM with basically no runtime overhead. 
+
+Type checking follows [PEP 484](https://peps.python.org/pep-0484/) and [PEP
+526](https://peps.python.org/pep-0526/).
+
+- [Github repository](https://github.com/python/mypy)
+
+- Install mypy using pipx: `pipx install mypy`
+
 ## Testing
 Tools to run unit tests and get coverage information.
 ### Pytest
@@ -218,4 +232,11 @@ Run `tox` with arguments:
 tox -p -- {flags}
 # Example
 tox -p -- --cov
+```
+
+Run specific `tox` environments:
+```
+tox -e {environment}
+# Example
+tox -e typecheck
 ```

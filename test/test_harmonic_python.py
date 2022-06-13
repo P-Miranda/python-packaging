@@ -15,9 +15,7 @@ from imppkg.harmony import main
 def test_harmony_parametrized(inputs, monkeypatch, capsys, expected):
     monkeypatch.setattr(sys, "argv", ["harmony"] + inputs)
     main()
-    assert capsys.readouterr().out.strip() == colored(
-        expected, "red", "on_cyan", attrs=["bold"]
-    )
+    assert capsys.readouterr().out.strip() == colored(expected, "red", "on_cyan", attrs=["bold"])
 
 
 def test_len():

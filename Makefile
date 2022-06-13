@@ -51,8 +51,23 @@ coverage:
 # Tox coverage: multiple python versions
 # tox -- {options}
 # -p: run environments in parallel
-tox-coverage:
+tox-full:
+	tox -p -e py39,py310,typecheck,format,lint
+
+tox-test:
 	tox -p -- --cov
+
+tox-typecheck:
+	tox -e typecheck
+
+tox-format-check:
+	tox -e format -- --check --diff src test
+
+tox-format-run:
+	tox -e format -- src test
+
+tox-lint:
+	tox -e lint -- src test
 
 tox-clean:
 	rm -rf .tox
